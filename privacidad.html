@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Aviso de privacidad · Asesores Tesis · asesorestesis.com -->
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- Esta página no usa JavaScript ni seguimiento: la política bloquea cualquier script. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'self'; form-action 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; upgrade-insecure-requests" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+
+<title>Aviso de privacidad · Asesores Tesis</title>
+<meta name="description" content="Cómo tratamos los datos que nos envías por el formulario y por WhatsApp, qué herramientas de medición usa la página y cómo ejercer tus derechos (Ley 1581 de 2012)." />
+<meta name="theme-color" content="#0C2A1F" />
+<link rel="canonical" href="https://asesorestesis.com/privacidad.html" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230C2A1F'/%3E%3Ccircle cx='32' cy='32' r='21' fill='none' stroke='%23CDAA5B' stroke-width='2.5'/%3E%3Cpath d='M22 44l10-25 10 25M26 36h12' fill='none' stroke='%23EBD391' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mynerve&family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
+<style>
+/* Misma hoja de papel que la página principal, en versión corta. */
+:root {
+  --empaste: #0C2A1F; --lomo: #06170F; --oro: #CDAA5B; --oro-claro: #EBD391;
+  --tiza: #EFEDE4; --tiza-2: rgba(239, 237, 228, .76);
+  --papel: #FBFAF7; --tinta: #17211C; --tinta-2: #46514B; --pluma: #1C7C54; --regla: rgba(23, 33, 28, .16);
+  --serif: 'STIX Two Text', 'Times New Roman', Times, 'Liberation Serif', serif;
+  --mano: 'Mynerve', 'Segoe Print', 'Bradley Hand', 'Chalkboard SE', 'Comic Sans MS', cursive;
+  --margen: clamp(20px, 5vw, 72px);
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { background: var(--lomo); -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body {
+  margin: 0; min-height: 100vh; color: var(--tiza); font-family: var(--serif); font-size: 1.0625rem; line-height: 1.6;
+  background: radial-gradient(120% 90% at 50% 20%, #123A2B 0%, var(--empaste) 45%, var(--lomo) 100%) fixed;
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+@media (min-width: 900px) { body { font-size: 1.12rem; } }
+h1, h2, p, ul, li { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--pluma); outline-offset: 3px; border-radius: 2px; }
+::selection { background: var(--oro); color: var(--lomo); }
+
+.barra { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 14px var(--margen); }
+.marca { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--tiza); font-size: 1.16rem; }
+.marca__sello { width: 32px; height: 32px; border: 1px solid var(--oro); border-radius: 50%; display: grid; place-items: center; font-style: italic; color: var(--oro-claro); font-size: 1rem; line-height: 1; }
+.volver { color: var(--tiza-2); text-decoration: underline; text-decoration-color: var(--oro); text-decoration-thickness: 1px; text-underline-offset: .28em; }
+.volver:hover { color: var(--oro-claro); }
+
+.pliego { padding: clamp(16px, 4vh, 48px) clamp(8px, 3vw, 48px) clamp(48px, 9vh, 120px); }
+.hoja {
+  position: relative; max-width: 860px; margin: 0 auto; background: var(--papel); color: var(--tinta); border-radius: 2px;
+  padding: clamp(44px, 7vw, 88px) clamp(22px, 6vw, 84px) clamp(44px, 6vw, 80px);
+  box-shadow: 0 46px 90px -30px rgba(0, 0, 0, .6);
+}
+.hoja::before { content: ''; position: absolute; inset: 0; z-index: -1; background: #EFEDE5; border-radius: 2px; transform: rotate(.7deg) translate(7px, 9px); box-shadow: 0 30px 60px -24px rgba(0, 0, 0, .55); }
+.hoja a { color: var(--tinta); text-decoration-color: var(--pluma); text-underline-offset: .22em; text-decoration-thickness: 1.5px; }
+.hoja a:hover { color: var(--pluma); }
+.apa-1 { text-align: center; font-weight: 700; font-size: clamp(1.65rem, 3.2vw, 2.4rem); line-height: 1.14; letter-spacing: -.012em; }
+.fecha { text-align: center; font-style: italic; color: var(--tinta-2); margin: .6em 0 2em; }
+.apa-2 { font-weight: 700; font-size: clamp(1.18rem, 2vw, 1.4rem); line-height: 1.2; margin: 1.6em 0 .4em; }
+.apa-p { max-width: 66ch; margin-bottom: .9em; }
+ul { padding-left: 1.3em; max-width: 66ch; margin-bottom: .9em; }
+li + li { margin-top: .35em; }
+mark {
+  color: inherit; padding: .04em .22em; margin: 0 -.22em; border-radius: .32em .12em .36em .16em;
+  background: linear-gradient(100deg, rgba(244, 226, 133, 0) 0%, rgba(244, 226, 133, .92) 2.5%, rgba(244, 226, 133, .68) 52%, rgba(244, 226, 133, .92) 97.5%, rgba(244, 226, 133, 0) 100%);
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+.al-margen { display: block; font-family: var(--mano); color: var(--pluma); font-size: 1.4rem; line-height: 1.12; transform: rotate(-3deg); transform-origin: left center; margin: 1.8em 0 0; }
+.pie { padding: 0 var(--margen) 36px; text-align: center; font-size: .9rem; color: var(--tiza-2); }
+.pie a { color: var(--tiza-2); }
+.pie a:hover { color: var(--oro-claro); }
+@media print { body { background: #fff; color: #000; } .hoja { box-shadow: none; } .hoja::before { display: none; } }
+</style>
+</head>
+<body>
+
+<header class="barra">
+  <a class="marca" href="./"><span class="marca__sello" aria-hidden="true">A</span><span>Asesores Tesis</span></a>
+  <a class="volver" href="./">Volver a la página</a>
+</header>
+
+<main class="pliego">
+  <article class="hoja">
+    <h1 class="apa-1">Aviso de privacidad</h1>
+    <p class="fecha">Última actualización: 6 de octubre de 2026</p>
+
+    <p class="apa-p">Este aviso explica qué datos recibimos cuando usas <a href="./">asesorestesis.com</a>, para qué los usamos y cómo puedes ejercer tus derechos, de acuerdo con la Ley 1581 de 2012 y sus decretos reglamentarios sobre protección de datos personales en Colombia.</p>
+
+    <h2 class="apa-2">Quién es el responsable</h2>
+    <p class="apa-p">Asesores Tesis, servicio de asesoría académica que opera en Colombia a través de asesorestesis.com. Canal de contacto para cualquier asunto de este aviso: WhatsApp <a href="https://wa.me/573167672653" rel="noopener">316 767 2653</a>.</p>
+
+    <h2 class="apa-2">Qué datos recibimos</h2>
+    <ul>
+      <li><b>Los que escribes en la solicitud:</b> nombre, número de WhatsApp, nivel académico, universidad y programa, y la etapa de tu trabajo o la materia y el tema. <mark>La página no los guarda:</mark> al enviar la solicitud se abre WhatsApp con el mensaje ya escrito, y eres tú quien lo envía a nuestro número.</li>
+      <li><b>Los que compartes después por WhatsApp:</b> avances, documentos o información de tu trabajo que decidas enviarnos durante la asesoría.</li>
+      <li><b>Datos de navegación:</b> la página usa Google Ads y Meta Pixel, que emplean cookies e identificadores para medir si nuestros anuncios funcionan (por ejemplo, cuántas personas que vieron un anuncio llegaron a la página o enviaron una solicitud). Estas herramientas no reciben lo que escribes en el formulario.</li>
+    </ul>
+
+    <h2 class="apa-2">Para qué los usamos</h2>
+    <ul>
+      <li>Responder tu solicitud y enviarte una propuesta de asesoría.</li>
+      <li>Prestar el servicio que contrates y comunicarnos contigo durante el acompañamiento.</li>
+      <li>Medir y mejorar nuestra publicidad, con los datos de navegación descritos arriba.</li>
+    </ul>
+    <p class="apa-p">No vendemos ni cedemos tus datos a terceros para fines distintos de los anteriores. Conservamos tu información solo el tiempo necesario para atender tu solicitud y, si contratas, para prestar el servicio y cumplir las obligaciones legales que apliquen.</p>
+
+    <h2 class="apa-2">Tu autorización</h2>
+    <p class="apa-p">Al marcar la casilla de autorización en el formulario y enviar la solicitud por WhatsApp, autorizas de manera previa, expresa e informada el tratamiento de tus datos para las finalidades descritas. Puedes revocar esa autorización en cualquier momento escribiéndonos por el mismo WhatsApp.</p>
+
+    <h2 class="apa-2">Herramientas de terceros</h2>
+    <ul>
+      <li><b>WhatsApp:</b> la comunicación ocurre a través de WhatsApp, un servicio de Meta Platforms, que aplica sus propias condiciones y su cifrado de extremo a extremo.</li>
+      <li><b>Google Ads:</b> medición de conversiones de Google LLC. Puedes revisar sus prácticas en <a href="https://policies.google.com/technologies/ads" rel="noopener">policies.google.com/technologies/ads</a> y ajustar tus preferencias en <a href="https://adssettings.google.com" rel="noopener">adssettings.google.com</a>.</li>
+      <li><b>Meta Pixel:</b> medición de anuncios de Meta Platforms. Puedes revisar su política en <a href="https://www.facebook.com/privacy/policy/" rel="noopener">facebook.com/privacy/policy</a> y ajustar tus preferencias de anuncios en <a href="https://www.facebook.com/ads/preferences" rel="noopener">facebook.com/ads/preferences</a>.</li>
+    </ul>
+    <p class="apa-p">También puedes bloquear o borrar las cookies desde la configuración de tu navegador; la página seguirá funcionando igual.</p>
+
+    <h2 class="apa-2">Tus derechos</h2>
+    <p class="apa-p">Como titular de tus datos puedes conocerlos, actualizarlos, rectificarlos y pedir que los eliminemos, así como revocar la autorización y pedir prueba de ella. Para ejercerlos, escríbenos por WhatsApp al 316 767 2653. Atendemos las consultas en un máximo de diez días hábiles y los reclamos en un máximo de quince días hábiles, como establece la ley. Si consideras que no hemos atendido tu solicitud, puedes acudir a la Superintendencia de Industria y Comercio.</p>
+
+    <h2 class="apa-2">Menores de edad</h2>
+    <p class="apa-p">Nuestros servicios están dirigidos a estudiantes de educación superior. Si eres menor de edad, pide a tu madre, padre o acudiente que nos escriba por ti.</p>
+
+    <h2 class="apa-2">Cambios en este aviso</h2>
+    <p class="apa-p">Si cambiamos la forma en que tratamos tus datos, actualizaremos este aviso y la fecha que aparece arriba.</p>
+
+    <span class="al-margen" aria-hidden="true">tú escribes y decides; nosotros cuidamos tus datos</span>
+  </article>
+</main>
+
+<footer class="pie">
+  <p>© 2026 Asesores Académicos. Especialistas en tesis de grado. Colombia. · <a href="./">Volver a la página</a></p>
+</footer>
+
+</body>
+</html>
