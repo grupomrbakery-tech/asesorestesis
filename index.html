@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Sitio de Alma Docta · GEGH · asesorestesis.com -->
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- ============ SEGURIDAD ============
+     Content-Security-Policy: solo puede ejecutarse código que venga de esta página
+     (app.js, cargado por el arranque de abajo) y de lo que ese código cargue a su vez
+     (Google Ads, Meta Pixel). Cualquier script que alguien lograra colar queda bloqueado.
+     El 'sha256-…' es la huella del script de arranque: si se cambia ese script, hay que
+     recalcular la huella. GitHub Pages no permite cabeceras HTTP, por eso va como <meta>. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; script-src 'strict-dynamic' 'sha256-2mp13Zyh7WvJjry6Co1bbxLQwwpdSk6EcGQU2yquGe8=' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; media-src 'self'; connect-src 'self' https:; frame-src https://*.doubleclick.net https://*.googletagmanager.com https://*.google.com https://*.facebook.com; upgrade-insecure-requests" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+
+<!-- Arranque (una sola línea, no separar): fuerza https, marca que hay JavaScript y carga app.js,
+     donde vive todo el código de la página, incluido el seguimiento de Google Ads y Meta Pixel. -->
+<script>(function(){var d=document,l=location;if(l.protocol==='http:'&&/[a-z]\.[a-z]/i.test(l.hostname)){l.replace('https://'+l.host+l.pathname+l.search+l.hash);return}d.documentElement.className+=' js';var s=d.createElement('script');s.src='app.js?v=3';d.head.appendChild(s)})();</script>
+
+<!-- Meta Pixel sin JavaScript (el resto del seguimiento está en app.js) -->
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1533956934953596&ev=PageView&noscript=1"
+/></noscript>
+<meta name="facebook-domain-verification" content="bo2tzca8ao5f68hpg5nma5n1kfxuvh" />
+
+<title>Alma Docta · Asesores de tesis · Colombia</title>
+<meta name="description" content="Alma Docta: asesoría de tesis y trabajos de grado en Colombia. Docentes universitarios activos te orientan paso a paso, de la pregunta de investigación a la sustentación. 100% online." />
+<meta name="keywords" content="asesoría tesis Colombia, asesor trabajo de grado, asesoría académica, tesis pregrado, tesis posgrado, sustentación, marco teórico, normas APA" />
+<meta name="author" content="Alma Docta" />
+<meta name="theme-color" content="#0C2A1F" />
+<link rel="canonical" href="https://asesorestesis.com/" />
+<meta property="og:title" content="Alma Docta · Asesores de tesis en Colombia" />
+<meta property="og:description" content="Acompañamiento profesional para tu trabajo de grado. 100% online en toda Colombia." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://asesorestesis.com/" />
+<meta property="og:locale" content="es_CO" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230C2A1F'/%3E%3Cpath d='M32 13C38.5 19.5 38.5 30.5 32 37Z' fill='%23CDAA5B'/%3E%3Cg fill='none' stroke='%23EFEDE4' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M32 13C38.5 19.5 38.5 30.5 32 37C25.5 30.5 25.5 19.5 32 13ZM32 13V47.5M9 44.5Q21 40.5 32 47.5Q43 40.5 55 44.5M9 49Q21 45 32 52Q43 45 55 49M9 44.5V49M55 44.5V49M32 47.5V52'/%3E%3C/g%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mynerve&family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
+<style>
+/* =====================================================================
+   ALMA DOCTA · estilos
+   Dos superficies: el EMPASTE (verde con pan de oro) y la HOJA (papel bond).
+   Dos voces: la letra de imprenta (STIX Two Text) y la mano del asesor (Mynerve).
+   ===================================================================== */
+:root {
+  --empaste: #0C2A1F;
+  --lomo: #06170F;
+  --oro: #CDAA5B;
+  --oro-claro: #EBD391;
+  --tiza: #EFEDE4;
+  --tiza-2: rgba(239, 237, 228, .76);
+  --tiza-3: rgba(239, 237, 228, .5);
+  --papel: #FBFAF7;
+  --tinta: #17211C;
+  --tinta-2: #46514B;
+  --pluma: #1C7C54;
+  --resaltador: #F4E285;
+  --regla: rgba(23, 33, 28, .16);
+  --serif: 'STIX Two Text', 'Times New Roman', Times, 'Liberation Serif', serif;
+  --mano: 'Mynerve', 'Segoe Print', 'Bradley Hand', 'Chalkboard SE', 'Comic Sans MS', cursive;
+  --margen: clamp(20px, 5vw, 72px);
+  --barra: 68px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--lomo);
+  color: var(--tiza);
+  font-family: var(--serif);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+@media (min-width: 900px) { body { font-size: 1.16rem; } }
+img, svg { display: block; }
+body { overflow-x: hidden; overflow-x: clip; }
+html { background: #06170F; }
+.sin-webgl .nota, .sin-webgl .lamina__figura figcaption, html:not(.js) .nota { display: none; }
+a { color: inherit; }
+h1, h2, h3, p, figure, dl, dd, ol, ul { margin: 0; }
+button, input, select { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--oro-claro); outline-offset: 3px; border-radius: 2px; }
+.hoja :focus-visible { outline-color: var(--pluma); }
+::selection { background: var(--oro); color: var(--lomo); }
+[hidden] { display: none !important; }
+
+.solo-lector { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.saltar { position: fixed; left: 12px; top: -80px; z-index: 90; background: var(--oro); color: var(--lomo); padding: .6em 1em; border-radius: 4px; font-weight: 600; }
+.saltar:focus { top: 12px; }
+
+/* ---------- lienzo ---------- */
+#escena { position: fixed; left: 0; top: 0; width: 100%; height: 100vh; height: 100lvh; z-index: 0; display: block; pointer-events: none; }
+.sin-webgl #escena { display: none; }
+.sin-webgl body, html:not(.js) body { background: radial-gradient(120% 90% at 50% 30%, #123A2B 0%, var(--empaste) 45%, var(--lomo) 100%) fixed; }
+main, .pie { position: relative; z-index: 1; }
+
+/* ---------- trazos a mano ---------- */
+.trazo { fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; overflow: visible; }
+.mano { font-family: var(--mano); font-weight: 400; letter-spacing: 0; }
+
+/* ---------- botones ---------- */
+.boton {
+  display: inline-flex; align-items: center; justify-content: center; gap: .6em;
+  min-height: 50px; padding: .62em 1.45em; border: 0; border-radius: 4px;
+  font-family: var(--serif); font-weight: 600; font-size: 1.06rem; line-height: 1.2; text-decoration: none; text-align: center;
+  cursor: pointer; transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+}
+.boton svg { width: 1.25em; height: 1.25em; flex: none; fill: currentColor; }
+.boton--oro {
+  color: #10241B;
+  background: linear-gradient(118deg, #B9944A 0%, #E9CF8C 34%, #CDAA5B 55%, #A9853E 100%);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .35) inset, 0 10px 26px -10px rgba(0, 0, 0, .7);
+}
+.boton--oro:hover { filter: brightness(1.08); transform: translateY(-1px); }
+.boton--tinta { color: var(--papel); background: var(--empaste); box-shadow: 0 10px 24px -12px rgba(12, 42, 31, .8); }
+.boton--tinta:hover { background: #123A2B; transform: translateY(-1px); }
+.boton:active { transform: translateY(0); }
+.enlace { color: var(--tiza); text-decoration: underline; text-decoration-color: var(--oro); text-decoration-thickness: 1px; text-underline-offset: .28em; }
+.enlace:hover { color: var(--oro-claro); }
+
+/* =====================================================================
+   BARRA
+   ===================================================================== */
+.barra {
+  position: fixed; left: 0; right: 0; top: 0; z-index: 40; height: var(--barra);
+  display: flex; align-items: center; gap: 20px; padding: 0 var(--margen);
+  transition: background-color .3s ease, box-shadow .3s ease;
+}
+.barra.es-solida { background: rgba(6, 23, 15, .93); box-shadow: 0 1px 0 rgba(205, 170, 91, .22); }
+@supports ((-webkit-backdrop-filter: blur(8px)) or (backdrop-filter: blur(8px))) {
+  .barra.es-solida { background: rgba(6, 23, 15, .78); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+}
+.marca { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--tiza); font-size: 1.16rem; white-space: nowrap; margin-right: auto; }
+/* símbolo de Alma Docta: la hoja sobre el libro abierto, en crema con la media hoja dorada */
+.marca__logo { flex: none; width: 36px; height: 36px; fill: none; stroke: var(--tiza); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+.marca__texto i, .pie__marca i, .carga__nombre i { font-style: italic; }
+.barra__nav { display: none; gap: clamp(18px, 2.6vw, 38px); }
+.barra__nav a { color: var(--tiza-2); text-decoration: none; font-size: 1.02rem; padding: .4em 0; }
+.barra__nav a:hover { color: var(--oro-claro); }
+.barra .boton { min-height: 42px; padding: .45em 1.05em; font-size: .98rem; }
+.barra__indice { display: inline-flex; align-items: center; min-height: 42px; padding: 0 .2em; background: none; border: 0; color: var(--tiza); font-size: 1.02rem; cursor: pointer; text-decoration: underline; text-decoration-color: var(--oro); text-underline-offset: .3em; text-decoration-thickness: 1px; }
+@media (min-width: 980px) { .barra__nav { display: flex; } .barra__indice { display: none; } }
+@media (max-width: 420px) { .marca__texto { display: none; } }
+
+.barra__sonido { flex: none; width: 42px; height: 42px; padding: 0; border-radius: 50%; border: 1px solid rgba(239, 237, 228, .34); background: none; color: var(--tiza); display: inline-flex; align-items: center; justify-content: center; gap: 3px; cursor: pointer; transition: border-color .25s, color .25s; }
+.barra__sonido span { width: 2px; height: 3px; border-radius: 1px; background: currentColor; }
+.barra__sonido.suena { border-color: var(--oro); color: var(--oro-claro); }
+.barra__sonido.suena span:nth-child(1) { height: 8px; animation: barras 1.1s ease-in-out -.2s infinite; }
+.barra__sonido.suena span:nth-child(2) { height: 15px; animation: barras 1.1s ease-in-out -.6s infinite; }
+.barra__sonido.suena span:nth-child(3) { height: 10px; animation: barras 1.1s ease-in-out -.9s infinite; }
+.barra__sonido.suena span:nth-child(4) { height: 13px; animation: barras 1.1s ease-in-out -.4s infinite; }
+@keyframes barras { 0%, 100% { height: 4px; } 50% { height: 16px; } }
+@media (max-width: 520px) { .barra { gap: 12px; } }
+
+/* =====================================================================
+   PANTALLA DE CARGA
+   Solo aparece si hay JavaScript. Si algo fallara, se retira sola.
+   ===================================================================== */
+.carga { display: none; }
+.js .carga {
+  position: fixed; inset: 0; z-index: 80; display: grid; grid-template-rows: 1fr auto; justify-items: center; align-items: center; text-align: center;
+  padding: calc(var(--barra) + 8px) var(--margen) clamp(32px, 8vh, 84px); background: var(--lomo); color: var(--tiza);
+  transition: opacity .9s ease, visibility 0s linear .9s; animation: carga-seguro .01s linear 14s forwards;
+}
+.js .carga.es-espera { animation: none; }
+.js .carga.se-va { opacity: 0; visibility: hidden; pointer-events: none; }
+@keyframes carga-seguro { to { opacity: 0; visibility: hidden; } }
+.cargando body { overflow: hidden; }
+.carga__marca { display: flex; align-items: center; gap: clamp(14px, 2.4vw, 28px); }
+.carga__sello { width: clamp(60px, 10vw, 108px); height: auto; fill: none; stroke: var(--tiza); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.carga__sello * { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.carga__sello .carga__hoja { fill: var(--oro); stroke: none; fill-opacity: 0; }
+.carga__nombre {
+  font-size: clamp(2rem, 7.2vw, 4.9rem); line-height: 1.1; letter-spacing: -.012em; white-space: nowrap;
+  color: transparent; -webkit-text-stroke: 1px rgba(239, 237, 228, .62);
+  background-image: linear-gradient(90deg, var(--oro-claro) var(--p, 0%), transparent var(--p, 0%)); -webkit-background-clip: text; background-clip: text;
+}
+@supports not (-webkit-text-stroke: 1px #000) { .carga__nombre { color: var(--tiza); } }
+.carga__pct { font-weight: 700; font-size: clamp(2.2rem, 5vw, 3.2rem); line-height: 1; font-variant-numeric: tabular-nums; }
+.carga__texto { margin-top: .55em; font-size: 1.05rem; color: var(--tiza-2); }
+.carga__entrar { margin-top: 1.1em; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.carga__entrar .boton { min-width: 230px; }
+.carga__sin { min-height: 42px; background: none; border: 0; color: var(--tiza-2); font-size: 1rem; cursor: pointer; text-decoration: underline; text-decoration-color: var(--oro); text-underline-offset: .3em; }
+.carga__sin:hover { color: var(--oro-claro); }
+
+/* índice a pantalla completa (tabla de contenido) */
+.indice { position: fixed; inset: 0; z-index: 60; background: var(--empaste); padding: calc(var(--barra) + 12px) var(--margen) 32px; overflow: auto; display: flex; flex-direction: column; align-items: center; }
+.indice__cerrar { position: absolute; right: var(--margen); top: 13px; min-height: 42px; background: none; border: 0; color: var(--tiza); font-size: 1.02rem; cursor: pointer; text-decoration: underline; text-decoration-color: var(--oro); text-underline-offset: .3em; }
+.indice__titulo { font-size: 1.5rem; font-weight: 700; margin: 4vh 0 1em; }
+.indice ol { list-style: none; padding: 0; width: 100%; max-width: 560px; }
+.indice ol a { display: flex; align-items: baseline; gap: .5em; padding: .72em 0; text-decoration: none; font-size: 1.28rem; line-height: 1.25; }
+.indice .guia { flex: 1; border-bottom: 2px dotted var(--tiza-3); transform: translateY(-.28em); min-width: 24px; }
+.indice .folio { color: var(--oro-claro); font-variant-numeric: tabular-nums; }
+.indice .boton { margin-top: 5vh; }
+.con-indice body { overflow: hidden; }
+
+/* =====================================================================
+   RECORRIDO · portada + cinco capítulos en un marco fijo
+   ===================================================================== */
+.ruta { position: relative; }
+.ruta__marco { position: relative; }
+.lamina { position: relative; min-height: 100vh; min-height: 100svh; padding: calc(var(--barra) + 12px) var(--margen) 28px; display: grid; }
+.hueco { min-width: 0; min-height: 0; }
+
+.js .ruta { height: calc(var(--etapas, 6) * 100vh); height: calc(var(--etapas, 6) * 100svh); }
+.js .ruta__marco { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
+.js .lamina { position: absolute; inset: 0; min-height: 0; opacity: 0; visibility: hidden; will-change: opacity, transform; }
+.js .lamina--portada { opacity: 1; visibility: visible; }
+html:not(.js) .lamina__figura, html:not(.js) .lamina--portada .hueco, html:not(.js) .ruta__capitulos, html:not(.js) .ruta__avance, html:not(.js) .portada__senal { display: none; }
+
+/* --- portada (lámina 0): compuesta como la portada de una tesis --- */
+.lamina--portada { grid-template-rows: auto minmax(110px, 1fr) auto; justify-items: center; text-align: center; }
+.portada__titulo {
+  margin-top: clamp(4px, 2.6vh, 34px);
+  font-weight: 400; font-size: clamp(2.5rem, 11.2vw, 6.2rem); line-height: 1; letter-spacing: -.022em;
+}
+.portada__titulo .linea-1 { display: block; }
+.portada__titulo del { position: relative; text-decoration: none; white-space: nowrap; transition: opacity .5s ease .75s; }
+.portada__titulo del::before, .portada__titulo del::after {
+  content: ''; position: absolute; left: -3%; right: -3%; top: 54%; height: .075em; background: var(--oro-claro); border-radius: .1em;
+  transform-origin: left center; transform: rotate(-2.2deg) scaleX(1);
+}
+.portada__titulo del::after { top: 61%; transform: rotate(1.1deg) scaleX(1); opacity: .85; }
+.portada__titulo ins {
+  display: block; text-decoration: none; font-family: var(--mano); color: var(--oro-claro);
+  font-size: 1.16em; line-height: .92; letter-spacing: 0; transform: rotate(-3deg); margin: -.02em 0 0 .2em;
+}
+.js .portada__titulo del::before, .js .portada__titulo del::after { transform: rotate(-2.2deg) scaleX(0); transition: transform .42s cubic-bezier(.7, 0, .2, 1) .55s; }
+.js .portada__titulo del::after { transform: rotate(1.1deg) scaleX(0); transition-delay: .78s; }
+.js .portada__titulo ins { clip-path: inset(-20% 104% -30% -4%); transition: clip-path .85s cubic-bezier(.6, .05, .25, 1) 1.05s; }
+.js.lista .portada__titulo del { opacity: .62; }
+.js.lista .portada__titulo del::before { transform: rotate(-2.2deg) scaleX(1); }
+.js.lista .portada__titulo del::after { transform: rotate(1.1deg) scaleX(1); }
+.js.lista .portada__titulo ins { clip-path: inset(-20% -4% -30% -4%); }
+html:not(.js) .portada__titulo del { opacity: .62; }
+
+.lamina--portada .hueco { align-self: stretch; justify-self: stretch; }
+.portada__abajo { text-shadow: 0 0 22px rgba(6, 23, 15, .95), 0 0 6px rgba(6, 23, 15, .7); }
+.portada__abajo .boton { text-shadow: none; }
+.portada__sub { max-width: 35em; font-size: clamp(1.06rem, 1.55vw, 1.32rem); line-height: 1.5; color: var(--tiza-2); text-wrap: balance; }
+.portada__acciones { display: flex; flex-wrap: wrap; gap: 14px 30px; justify-content: center; align-items: center; margin-top: clamp(14px, 2.6vh, 26px); }
+.portada__pie { margin-top: clamp(10px, 2vh, 20px); font-size: .98rem; font-style: italic; color: var(--tiza-3); }
+.portada__senal { position: absolute; left: var(--margen); bottom: 22px; display: none; align-items: flex-end; gap: 6px; color: var(--oro-claro); font-family: var(--mano); font-size: 1.35rem; line-height: 1; transform: rotate(-4deg); }
+.portada__senal svg { width: 22px; height: 52px; }
+@media (min-width: 900px) and (min-height: 640px) { .portada__senal { display: flex; } }
+
+/* --- capítulos (láminas 1 a 5) --- */
+.lamina--etapa { grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 42%) auto auto; align-content: start; row-gap: 6px; }
+.lamina__texto { grid-row: 2; min-width: 0; align-self: start; text-shadow: 0 0 22px rgba(6, 23, 15, .95), 0 0 6px rgba(6, 23, 15, .7); }
+.lamina__cap { font-style: italic; color: var(--oro-claro); font-size: 1.04rem; margin-bottom: .55em; }
+.lamina__titulo { font-weight: 400; font-size: clamp(1.75rem, 3.7vw, 3.45rem); line-height: 1.07; letter-spacing: -.018em; max-width: 15em; text-wrap: balance; }
+.lamina__cuerpo { margin-top: .85em; max-width: 33em; color: var(--tiza-2); }
+.lamina__logro { margin-top: .7em; max-width: 33em; }
+.lamina__logro b { font-weight: 600; color: var(--oro-claro); }
+.lamina__figura { grid-row: 1; position: relative; display: grid; grid-template-rows: minmax(0, 1fr) auto; min-height: 0; }
+.lamina__figura figcaption { text-align: center; font-size: .9rem; line-height: 1.35; color: var(--tiza-3); padding-top: 2px; }
+.lamina__figura figcaption b { font-weight: 600; color: var(--tiza-2); }
+.nota { grid-row: 3; justify-self: end; margin: 16px 4px 0 0; max-width: 11em; text-align: right; color: var(--oro-claro); font-family: var(--mano); font-size: 1.42rem; line-height: 1.12; transform: rotate(-3deg); }
+.nota svg { display: none; }
+.js .nota__texto { display: inline-block; clip-path: inset(-20% 104% -30% -4%); transition: clip-path .8s cubic-bezier(.6, .05, .25, 1) .3s; }
+.js .es-actual .nota__texto { clip-path: inset(-20% -4% -30% -4%); }
+.js .lamina .trazo, .js .portada__senal .trazo { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset .55s ease .95s; }
+.js .lamina.es-actual .trazo, .js.lista .es-actual .portada__senal .trazo { stroke-dashoffset: 0; }
+
+@media (min-width: 900px) {
+  .lamina--etapa {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); grid-template-rows: minmax(0, 1fr);
+    align-items: center; column-gap: clamp(28px, 4vw, 80px);
+    max-width: 1480px; margin-inline: auto; padding-right: calc(var(--margen) + 40px);
+  }
+  .lamina--par.lamina--etapa { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); padding-right: calc(var(--margen) + 56px); }
+  .lamina__texto { grid-column: 1; grid-row: 1; align-self: center; }
+  .lamina__figura { grid-column: 2; grid-row: 1; height: 100%; }
+  .lamina--par .lamina__texto { grid-column: 2; }
+  .lamina--par .lamina__figura { grid-column: 1; }
+  .lamina__figura .hueco { margin-left: 17%; }
+  .lamina--par .lamina__figura .hueco { margin-left: 0; margin-right: 17%; }
+  .lamina__figura figcaption { font-size: .95rem; padding: 4px 0 6px 17%; }
+  .lamina--par .lamina__figura figcaption { padding: 4px 17% 6px 0; }
+  .nota { grid-column: 2; grid-row: 1; align-self: start; justify-self: start; z-index: 2; margin: 7vh 0 0; max-width: 8.2em; text-align: left; font-size: clamp(1.4rem, 2vw, 1.85rem); transform: rotate(-4deg); }
+  .nota svg { display: block; width: 104px; height: 52px; margin: 8px 0 0 46%; }
+  .lamina--par .nota { grid-column: 1; justify-self: end; text-align: right; transform: rotate(4deg); }
+  .lamina--par .nota svg { margin: 8px 46% 0 auto; transform: scaleX(-1); }
+}
+@media (max-height: 700px) and (max-width: 899px) {
+  .lamina--etapa { grid-template-rows: minmax(0, 34%) auto auto; }
+  .lamina__logro { display: none; }
+}
+@media (max-height: 600px) and (max-width: 899px) { .nota { display: none; } }
+
+/* índice de capítulos y avance */
+.ruta__capitulos { position: absolute; right: max(10px, calc(var(--margen) - 46px)); top: 50%; z-index: 3; transform: translateY(-50%); list-style: none; padding: 0; display: none; flex-direction: column; gap: 4px; opacity: 0; transition: opacity .4s ease; }
+.ruta__capitulos.es-visible { opacity: 1; }
+.ruta__capitulos button { width: 36px; height: 36px; border-radius: 50%; border: 1px solid transparent; background: none; color: var(--tiza-3); font-size: .98rem; cursor: pointer; transition: color .2s, border-color .2s; }
+.ruta__capitulos button:hover { color: var(--tiza); }
+.ruta__capitulos .es-actual button { border-color: var(--oro); color: var(--oro-claro); }
+@media (min-width: 900px) { .ruta__capitulos { display: flex; } }
+.ruta__avance { position: absolute; left: 0; right: 0; top: 0; height: 2px; z-index: 3; background: var(--oro); transform-origin: left center; transform: scaleX(0); opacity: .75; }
+
+/* =====================================================================
+   HOJAS · papel bond sobre el empaste
+   ===================================================================== */
+.pliego, .nosotros, .cierre { scroll-margin-top: calc(var(--barra) - 2px); }
+.pliego { position: relative; overflow: hidden; padding: clamp(36px, 9vh, 120px) clamp(8px, 3vw, 48px); }
+.hoja {
+  position: relative; max-width: 1060px; margin: 0 auto; background: var(--papel); color: var(--tinta); border-radius: 2px;
+  padding: clamp(56px, 8vw, 112px) clamp(22px, 6vw, 92px) clamp(48px, 7vw, 104px) clamp(22px, 8vw, 124px);
+  box-shadow: 0 46px 90px -30px rgba(0, 0, 0, .6);
+}
+.hoja::before { content: ''; position: absolute; inset: 0; z-index: -1; background: #EFEDE5; border-radius: 2px; transform: rotate(.7deg) translate(7px, 9px); box-shadow: 0 30px 60px -24px rgba(0, 0, 0, .55); }
+.hoja__folio { position: absolute; top: clamp(18px, 3.2vw, 44px); right: clamp(22px, 6vw, 92px); font-size: .98rem; color: var(--tinta-2); }
+.hoja a { color: var(--tinta); text-decoration-color: var(--pluma); text-underline-offset: .22em; text-decoration-thickness: 1.5px; }
+.hoja a:hover { color: var(--pluma); }
+.hoja a.boton { color: var(--papel); text-decoration: none; }
+
+.apa-1 { text-align: center; font-weight: 700; font-size: clamp(1.65rem, 3.2vw, 2.5rem); line-height: 1.14; letter-spacing: -.012em; margin-bottom: 1em; text-wrap: balance; }
+.apa-2 { font-weight: 700; font-size: clamp(1.28rem, 2.1vw, 1.6rem); line-height: 1.2; margin-bottom: .45em; }
+.apa-p { max-width: 62ch; margin-bottom: 1em; }
+.apa-p--sangria { text-indent: 2.3em; }
+mark {
+  color: inherit; padding: .04em .22em; margin: 0 -.22em; border-radius: .32em .12em .36em .16em;
+  background: linear-gradient(100deg, rgba(244, 226, 133, 0) 0%, rgba(244, 226, 133, .92) 2.5%, rgba(244, 226, 133, .68) 52%, rgba(244, 226, 133, .92) 97.5%, rgba(244, 226, 133, 0) 100%);
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+.al-margen { font-family: var(--mano); color: var(--pluma); font-size: 1.42rem; line-height: 1.12; transform: rotate(-3deg); transform-origin: left center; }
+
+/* líneas de asesoría */
+.lineas { margin-top: clamp(20px, 4vw, 44px); }
+.linea { display: grid; gap: 4px 44px; padding: clamp(20px, 3vw, 32px) 0; border-top: 1px solid var(--regla); }
+.linea__incluye { font-size: .98em; color: var(--tinta-2); max-width: 62ch; }
+.linea__incluye i { color: var(--tinta); }
+.linea__pedir { margin-top: .7em; font-weight: 600; }
+.linea .al-margen { margin: .5em 0 .1em; max-width: 12em; }
+@media (min-width: 900px) {
+  .linea { grid-template-columns: minmax(0, 1fr) 200px; align-items: center; }
+  .linea .al-margen { margin: 0; }
+}
+
+/* Tabla 1 (formato APA: filete arriba, bajo el encabezado y al final) */
+.tabla { margin-top: clamp(28px, 5vw, 56px); padding-top: clamp(24px, 4vw, 40px); border-top: 1px solid var(--regla); }
+.tabla__num { font-weight: 700; }
+.tabla__titulo { font-style: italic; margin-bottom: .75em; }
+.tabla table { width: 100%; table-layout: fixed; border-collapse: collapse; border-top: 1.5px solid var(--tinta); border-bottom: 1.5px solid var(--tinta); font-size: .97em; line-height: 1.42; }
+.tabla th { text-align: left; font-weight: 600; padding: .6em 1.1em .6em 0; border-bottom: 1px solid var(--tinta); vertical-align: bottom; }
+.tabla td { padding: .95em 1.1em .95em 0; vertical-align: top; }
+.tabla td:last-child, .tabla th:last-child { padding-right: 0; }
+.tabla th:nth-child(1) { width: 27%; }
+.tabla th:nth-child(2) { width: 12%; }
+.tabla th:nth-child(3) { width: 24%; }
+.tabla td:first-child { font-weight: 600; }
+.tabla td:nth-child(2) { white-space: nowrap; }
+.tabla tbody tr + tr td { border-top: 1px solid var(--regla); }
+.tabla__nota { margin-top: .75em; font-size: .96em; color: var(--tinta-2); max-width: 70ch; }
+.tabla__pedir { margin-top: 1.6em; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 26px; }
+.cercado { position: relative; display: inline-block; white-space: nowrap; }
+.cercado svg { position: absolute; left: -9%; top: -32%; width: 118%; height: 164%; color: var(--pluma); stroke-width: 2; pointer-events: none; }
+.cercado svg path { vector-effect: non-scaling-stroke; }
+.tabla .al-margen { display: block; font-size: 1.3rem; font-weight: 400; margin: .55em 0 0 .4em; white-space: nowrap; }
+@media (max-width: 760px) {
+  .tabla table, .tabla tbody, .tabla tr, .tabla td { display: block; }
+  .tabla thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .tabla tr { padding: 1.1em 0; }
+  .tabla tbody tr + tr { border-top: 1px solid var(--regla); }
+  .tabla tbody tr + tr td { border-top: 0; }
+  .tabla td { padding: .12em 0; white-space: normal !important; }
+  .tabla td:first-child { font-size: 1.12em; margin-bottom: .2em; }
+  .tabla td[data-col]::before { content: attr(data-col) ': '; font-style: italic; color: var(--tinta-2); }
+}
+
+/* preguntas */
+.faq { margin-top: clamp(12px, 3vw, 28px); }
+.faq details { border-top: 1px solid var(--regla); }
+.faq details:last-of-type { border-bottom: 1px solid var(--regla); }
+.faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: baseline; gap: 22px; padding: 1.02em 0; font-weight: 600; font-size: 1.08em; line-height: 1.3; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: '+'; flex: none; font-weight: 400; font-size: 1.55em; line-height: .8; color: var(--pluma); transition: transform .25s ease; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq summary:hover { color: var(--pluma); }
+.faq__r { padding: 0 0 1.25em; max-width: 64ch; color: var(--tinta-2); }
+.faq__cola { margin-top: 1.8em; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; }
+.faq__cola .al-margen { font-size: 1.5rem; }
+
+/* formato de solicitud */
+.formato__cab { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 18px 32px; margin-bottom: clamp(20px, 3.4vw, 40px); }
+.formato__cab .apa-1 { text-align: left; margin-bottom: .35em; }
+.formato__cab p { max-width: 34em; color: var(--tinta-2); }
+.sello { flex: none; display: inline-block; border: 2.5px solid var(--pluma); color: var(--pluma); border-radius: 5px; padding: .55em .95em .5em; font-weight: 700; font-size: .8rem; line-height: 1.25; letter-spacing: .09em; text-transform: uppercase; text-align: center; transform: rotate(-5deg); opacity: .9; }
+.sello b { display: block; font-size: 1.55em; letter-spacing: .04em; }
+.formato__cuerpo { display: grid; gap: 36px 64px; }
+@media (min-width: 920px) { .formato__cuerpo { grid-template-columns: minmax(0, 1.3fr) minmax(0, .7fr); } }
+.opciones { border: 0; padding: 0; margin: 0 0 1.5em; min-width: 0; }
+.opciones legend, .campo__rotulo { display: block; padding: 0; font-weight: 600; font-size: .98rem; margin-bottom: .45em; }
+.opcion { position: relative; display: inline-flex; align-items: center; gap: .55em; margin: 0 1.5em .55em 0; cursor: pointer; min-height: 32px; }
+.opcion input { position: absolute; opacity: 0; width: 22px; height: 22px; margin: 0; left: 0; top: 50%; transform: translateY(-50%); cursor: pointer; }
+.opcion__caja { flex: none; width: 21px; height: 21px; border: 1.5px solid var(--tinta); display: grid; place-items: center; }
+.opcion__caja svg { width: 27px; height: 22px; color: var(--pluma); stroke-width: 3.2; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset .22s ease; transform: translate(3px, -4px); }
+.opcion input:checked + .opcion__caja svg { stroke-dashoffset: 0; }
+.opcion input:focus-visible + .opcion__caja { outline: 2px solid var(--pluma); outline-offset: 3px; }
+/* casilla de autorización de datos */
+.opcion--acepto { display: flex; align-items: flex-start; margin: .2em 0 1.4em; max-width: 40em; font-size: .95rem; line-height: 1.45; color: var(--tinta-2); }
+.opcion--acepto .opcion__caja { margin-top: .2em; }
+.opcion--acepto a { color: var(--tinta); }
+.campo { display: block; margin: 0 0 1.35em; min-width: 0; }
+.campo__rotulo { margin-bottom: .05em; }
+.campo input, .campo select {
+  display: block; width: 100%; min-height: 46px; padding: .12em 0 .08em; border: 0; border-bottom: 1.5px solid var(--tinta); border-radius: 0; background-color: transparent;
+  font-family: var(--mano); font-size: 1.45rem; line-height: 1.25; color: var(--pluma); -webkit-appearance: none; appearance: none;
+}
+.campo input::placeholder { font-family: var(--serif); font-style: italic; font-size: 1.05rem; color: #8B948E; opacity: 1; }
+.campo select { cursor: pointer; padding-right: 1.6em; background-repeat: no-repeat; background-position: right .15em center; background-size: 14px 9px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%2317211C' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); }
+.campo select:invalid { font-family: var(--serif); font-style: italic; font-size: 1.05rem; color: #8B948E; }
+.campo select option { font-family: var(--serif); font-style: normal; font-size: 1rem; color: var(--tinta); background: var(--papel); }
+.campo input:focus, .campo select:focus { outline: none; border-bottom-color: var(--pluma); box-shadow: 0 1.5px 0 var(--pluma); }
+.campo-par { display: grid; gap: 0 28px; }
+@media (min-width: 620px) { .campo-par { grid-template-columns: 1fr 1fr; } }
+.formato__enviar { margin-top: .4em; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+.formato__enviar .boton { width: 100%; min-height: 56px; font-size: 1.1rem; }
+@media (min-width: 620px) { .formato__enviar .boton { width: auto; } }
+.formato__aviso { font-size: .92rem; color: var(--tinta-2); max-width: 40em; }
+.formato__estado { font-weight: 600; color: var(--pluma); }
+.despues h3 { font-size: 1.14rem; font-weight: 700; margin-bottom: .6em; }
+.despues ol { padding-left: 1.3em; display: grid; gap: .7em; color: var(--tinta-2); font-size: .98em; }
+.despues ol li::marker { font-weight: 700; color: var(--tinta); }
+.despues .al-margen { margin-top: 1.1em; font-size: 1.5rem; }
+.despues__directo { margin-top: 1.4em; font-size: .98em; }
+
+/* =====================================================================
+   NOSOTROS · sobre el empaste
+   ===================================================================== */
+.nosotros { padding: clamp(64px, 13vh, 150px) 0 clamp(40px, 9vh, 110px); }
+.nosotros__in { max-width: 1280px; margin: 0 auto; padding: 0 var(--margen); }
+.nosotros__titulo { font-weight: 400; font-size: clamp(2.2rem, 5.6vw, 4.7rem); line-height: 1.02; letter-spacing: -.022em; max-width: 12em; text-wrap: balance; }
+.nosotros__intro { margin-top: 1.2em; max-width: 36em; font-size: clamp(1.1rem, 1.65vw, 1.36rem); line-height: 1.5; color: var(--tiza-2); }
+.nosotros__nota { display: inline-block; margin-top: .8em; color: var(--oro-claro); font-family: var(--mano); font-size: clamp(1.4rem, 2.2vw, 1.9rem); line-height: 1.1; transform: rotate(-2.5deg); }
+.razones { display: grid; gap: clamp(26px, 4vw, 44px) 72px; margin-top: clamp(40px, 8vh, 88px); }
+@media (min-width: 820px) { .razones { grid-template-columns: 1fr 1fr; } }
+.razones dt { font-size: 1.36rem; font-weight: 600; line-height: 1.2; color: var(--oro-claro); margin-bottom: .3em; }
+.razones dd { max-width: 32em; color: var(--tiza-2); }
+.hechos { margin-top: clamp(36px, 7vh, 72px); padding-top: 1.1em; border-top: 1px solid rgba(205, 170, 91, .3); max-width: 44em; font-size: 1.12em; font-style: italic; color: var(--tiza); }
+.areas { margin-top: clamp(48px, 10vh, 120px); overflow: hidden; }
+.areas__rotulo { padding: 0 var(--margen); max-width: 1280px; margin: 0 auto .5em; font-size: 1.04rem; font-style: italic; color: var(--oro-claro); }
+.areas__cinta { list-style: none; display: flex; flex-wrap: wrap; gap: .1em .7em; padding: 0 var(--margen); font-size: clamp(1.6rem, 5.6vw, 4.6rem); line-height: 1.16; letter-spacing: -.015em; will-change: transform; }
+.areas__cinta li { display: flex; align-items: center; gap: .7em; }
+.areas__cinta li::after { content: ''; width: .22em; height: .22em; border-radius: 50%; background: var(--oro); flex: none; }
+.areas__cinta li:last-child::after { display: none; }
+.areas__cinta sup { font-size: .42em; color: var(--oro-claro); margin-left: .1em; }
+.js .areas__cinta { flex-wrap: nowrap; white-space: nowrap; width: max-content; }
+.nota-pie { position: relative; max-width: 1280px; margin: clamp(26px, 5vh, 52px) auto 0; padding: .8em var(--margen) 0; font-size: .95rem; line-height: 1.5; color: var(--tiza-2); }
+.nota-pie::before { content: ''; position: absolute; left: var(--margen); top: 0; width: 130px; height: 1px; background: var(--tiza-3); }
+.nota-pie span { display: block; max-width: 46em; }
+.nota-pie sup { color: var(--oro-claro); }
+
+/* =====================================================================
+   CIERRE Y PIE
+   ===================================================================== */
+.cierre { position: relative; min-height: 100vh; min-height: 100svh; display: grid; grid-template-rows: minmax(190px, 1fr) auto; justify-items: center; text-align: center; padding: calc(var(--barra) + 4px) var(--margen) clamp(44px, 9vh, 104px); }
+.cierre .hueco { align-self: stretch; justify-self: stretch; }
+.cierre__titulo { font-weight: 400; font-size: clamp(2.15rem, 5.6vw, 4.8rem); line-height: 1.03; letter-spacing: -.022em; max-width: 13em; text-wrap: balance; }
+.cierre__texto { margin: 1.1em auto 0; max-width: 34em; color: var(--tiza-2); font-size: clamp(1.06rem, 1.5vw, 1.26rem); }
+.cierre__acciones { margin-top: 1.5em; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px 26px; }
+.cierre__nota { color: var(--oro-claro); font-family: var(--mano); font-size: clamp(1.4rem, 2.1vw, 1.8rem); transform: rotate(-3deg); }
+
+.pie { background: var(--lomo); border-top: 1px solid rgba(205, 170, 91, .22); padding: clamp(40px, 7vw, 72px) var(--margen) 28px; }
+.pie__in { max-width: 1280px; margin: 0 auto; display: grid; gap: 34px 60px; }
+@media (min-width: 760px) { .pie__in { grid-template-columns: 1.5fr 1fr 1fr; } }
+.pie__in .pie__marca { display: flex; align-items: center; gap: 10px; font-size: 1.5rem; color: var(--tiza); margin-bottom: .15em; }
+.pie__in .pie__marca .marca__logo { width: 40px; height: 40px; stroke-width: 2.4; }
+.pie__in .pie__lema { font-size: .82rem; letter-spacing: .18em; text-transform: uppercase; color: var(--oro-claro); margin-bottom: .9em; }
+.pie__in p { color: var(--tiza-2); font-size: .98rem; max-width: 26em; }
+.pie h3 { font-size: 1rem; font-weight: 600; font-style: italic; color: var(--oro-claro); margin-bottom: .6em; }
+.pie ul { list-style: none; padding: 0; display: grid; gap: .45em; font-size: .98rem; }
+.pie a { color: var(--tiza-2); text-decoration: none; }
+.pie a:hover { color: var(--oro-claro); }
+.pie__legal { max-width: 1280px; margin: 36px auto 0; padding-top: 18px; border-top: 1px solid rgba(239, 237, 228, .12); font-size: .88rem; color: var(--tiza-3); display: flex; flex-wrap: wrap; gap: 6px 24px; justify-content: space-between; }
+
+/* WhatsApp flotante */
+.wa { position: fixed; right: 16px; bottom: 16px; z-index: 35; width: 58px; height: 58px; border-radius: 50%; display: grid; place-items: center; color: #10241B; background: linear-gradient(135deg, #E9CF8C 0%, #CDAA5B 55%, #A9853E 100%); box-shadow: 0 1px 0 rgba(255, 255, 255, .4) inset, 0 12px 30px -8px rgba(0, 0, 0, .7); transition: transform .2s ease; }
+.wa:hover { transform: scale(1.07); }
+.wa svg { width: 30px; height: 30px; fill: currentColor; }
+@media (min-width: 900px) { .wa { right: 26px; bottom: 26px; width: 62px; height: 62px; } }
+
+/* ---------- movimiento reducido ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: .01ms !important; transition-delay: 0s !important; animation: none !important; scroll-behavior: auto !important; }
+}
+
+@media print {
+  #escena, .barra, .wa, .indice, .ruta__capitulos, .ruta__avance { display: none !important; }
+  body { background: #fff; color: #000; }
+}
+</style>
+</head>
+<body>
+
+<!-- ======================= PANTALLA DE CARGA ======================= -->
+<div class="carga" id="carga">
+  <div class="carga__marca" aria-hidden="true">
+    <svg class="carga__sello" viewBox="0 0 64 64">
+      <path class="carga__hoja" d="M32 13C38.5 19.5 38.5 30.5 32 37Z"/>
+      <path pathLength="1" d="M32 13C38.5 19.5 38.5 30.5 32 37C25.5 30.5 25.5 19.5 32 13Z"/>
+      <path pathLength="1" d="M32 13V47.5"/>
+      <path pathLength="1" d="M9 44.5Q21 40.5 32 47.5Q43 40.5 55 44.5"/>
+      <path pathLength="1" d="M9 49Q21 45 32 52Q43 45 55 49"/>
+      <path pathLength="1" d="M9 44.5V49M55 44.5V49M32 47.5V52"/>
+    </svg>
+    <span class="carga__nombre">Alma <i>Docta</i></span>
+  </div>
+  <div class="carga__pie">
+    <p class="carga__pct" aria-hidden="true"><span id="cargaPct">0</span>%</p>
+    <p class="carga__texto" id="cargaTexto" role="status">Cargando tu experiencia.</p>
+    <div class="carga__entrar" id="cargaEntrar" hidden>
+      <button class="boton boton--oro" type="button" id="entrarCon">Entrar con música</button>
+      <button class="carga__sin" type="button" id="entrarSin">Entrar en silencio</button>
+    </div>
+  </div>
+</div>
+
+<a class="saltar" href="#servicios">Saltar a las líneas de asesoría</a>
+
+<!-- Símbolo de Alma Docta, trazos a mano y el ícono de WhatsApp, definidos una sola vez -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="logo-marca" viewBox="0 0 64 64">
+      <path d="M32 13C38.5 19.5 38.5 30.5 32 37Z" fill="#CDAA5B" stroke="none"/>
+      <path d="M32 13C38.5 19.5 38.5 30.5 32 37C25.5 30.5 25.5 19.5 32 13ZM32 13V47.5M9 44.5Q21 40.5 32 47.5Q43 40.5 55 44.5M9 49Q21 45 32 52Q43 45 55 49M9 44.5V49M55 44.5V49M32 47.5V52"/>
+    </symbol>
+    <symbol id="t-flecha" viewBox="0 0 120 60"><path pathLength="1" d="M4 10C38 2 82 12 104 44"/><path pathLength="1" d="M87 39l18 7-2-20"/></symbol>
+    <symbol id="t-abajo" viewBox="0 0 30 70"><path pathLength="1" d="M16 3c-6 19 4 35-2 59"/><path pathLength="1" d="M4 50l10 14 11-13"/></symbol>
+    <symbol id="t-visto" viewBox="0 0 28 22"><path pathLength="1" d="M3 12l7 7L25 3"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></symbol>
+  </defs>
+</svg>
+
+<canvas id="escena" aria-hidden="true"></canvas>
+
+<!-- ============================ BARRA ============================ -->
+<header class="barra" id="barra">
+  <a class="marca" href="#inicio" aria-label="Alma Docta, ir al inicio">
+    <svg class="marca__logo" aria-hidden="true"><use href="#logo-marca"/></svg>
+    <span class="marca__texto">Alma <i>Docta</i></span>
+  </a>
+  <nav class="barra__nav" aria-label="Secciones">
+    <a href="#ruta">La ruta</a>
+    <a href="#servicios">Asesorías</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#preguntas">Preguntas</a>
+  </nav>
+  <button class="barra__sonido" type="button" id="sonido" aria-pressed="false" aria-label="Activar la música" title="Música"><span></span><span></span><span></span><span></span></button>
+  <button class="barra__indice" type="button" aria-expanded="false" aria-controls="indice">Índice</button>
+  <a class="boton boton--oro" href="#solicitud">Solicitar asesoría</a>
+</header>
+
+<div class="indice" id="indice" role="dialog" aria-modal="true" aria-label="Contenido" hidden>
+  <button class="indice__cerrar" type="button">Cerrar</button>
+  <p class="indice__titulo">Contenido</p>
+  <ol>
+    <li><a href="#inicio"><span>Portada</span><span class="guia"></span><span class="folio">i</span></a></li>
+    <li><a href="#ruta"><span>La ruta de tu tesis</span><span class="guia"></span><span class="folio">1</span></a></li>
+    <li><a href="#servicios"><span>Líneas de asesoría</span><span class="guia"></span><span class="folio">2</span></a></li>
+    <li><a href="#nosotros"><span>Por qué nosotros</span><span class="guia"></span><span class="folio">3</span></a></li>
+    <li><a href="#preguntas"><span>Preguntas frecuentes</span><span class="guia"></span><span class="folio">4</span></a></li>
+    <li><a href="#solicitud"><span>Solicitud de asesoría</span><span class="guia"></span><span class="folio">5</span></a></li>
+  </ol>
+  <a class="boton boton--oro" href="#solicitud">Solicitar asesoría</a>
+</div>
+
+<main id="inicio">
+
+<!-- ================= PORTADA + RUTA (marco fijo) ================= -->
+<section class="ruta" id="recorrido" aria-label="Portada y ruta de la tesis">
+  <div class="ruta__marco">
+
+    <!-- 0 · Portada -->
+    <article class="lamina lamina--portada" data-etapa="0">
+      <h1 class="portada__titulo">
+        <span class="linea-1">Tu tesis <del>no avanza</del></span>
+        <ins>toma forma.</ins>
+      </h1>
+      <div class="hueco" data-hueco></div>
+      <div class="portada__abajo">
+        <p class="portada__sub">Asesoría de tesis y trabajos de grado para pregrado y posgrado. Docentes universitarios activos te orientan paso a paso, de la pregunta de investigación a la sustentación.</p>
+        <div class="portada__acciones">
+          <a class="boton boton--oro" href="#solicitud">Solicitar asesoría</a>
+          <a class="enlace" href="#ruta">Ver la ruta de tu tesis</a>
+        </div>
+        <p class="portada__pie">Colombia, 100% online</p>
+      </div>
+      <p class="portada__senal" aria-hidden="true"><svg class="trazo"><use href="#t-abajo"/></svg><span>empieza por aquí</span></p>
+    </article>
+
+    <!-- 1 · La pregunta -->
+    <article class="lamina lamina--etapa" data-etapa="1" id="ruta">
+      <div class="lamina__texto">
+        <p class="lamina__cap">Capítulo 1. Planteamiento del problema</p>
+        <h2 class="lamina__titulo">Toda tesis empieza con una buena pregunta.</h2>
+        <p class="lamina__cuerpo">Delimitamos contigo el tema, el problema y los objetivos hasta que tu idea quepa en una pregunta que sí se pueda investigar.</p>
+        <p class="lamina__logro"><b>Sales con</b> un anteproyecto listo para presentar.</p>
+      </div>
+      <figure class="lamina__figura">
+        <div class="hueco" data-hueco></div>
+        <figcaption><b>Figura 1.</b> <i>La pregunta de investigación.</i> Fuente: elaboración propia.</figcaption>
+      </figure>
+      <p class="nota" aria-hidden="true"><span class="nota__texto">¿se puede responder en un semestre?</span><svg class="trazo"><use href="#t-flecha"/></svg></p>
+    </article>
+
+    <!-- 2 · Marco teórico -->
+    <article class="lamina lamina--etapa lamina--par" data-etapa="2">
+      <div class="lamina__texto">
+        <p class="lamina__cap">Capítulo 2. Marco teórico</p>
+        <h2 class="lamina__titulo">Leer mucho no es lo mismo que saber qué citar.</h2>
+        <p class="lamina__cuerpo">Te enseñamos a buscar, seleccionar y organizar fuentes para construir un marco teórico y un estado del arte que sostengan tu trabajo.</p>
+        <p class="lamina__logro"><b>Sales con</b> referencias bien citadas en APA o ICONTEC.</p>
+      </div>
+      <figure class="lamina__figura">
+        <div class="hueco" data-hueco></div>
+        <figcaption><b>Figura 2.</b> <i>Marco teórico y estado del arte.</i> Fuente: elaboración propia.</figcaption>
+      </figure>
+      <p class="nota" aria-hidden="true"><span class="nota__texto">¿y esta fuente?</span><svg class="trazo"><use href="#t-flecha"/></svg></p>
+    </article>
+
+    <!-- 3 · Método -->
+    <article class="lamina lamina--etapa" data-etapa="3">
+      <div class="lamina__texto">
+        <p class="lamina__cap">Capítulo 3. Diseño metodológico</p>
+        <h2 class="lamina__titulo">El método es un instrumento. Lo afinamos contigo.</h2>
+        <p class="lamina__cuerpo">Definimos el enfoque, el diseño y los instrumentos que tu pregunta necesita, sea cuantitativa, cualitativa o mixta, y te explicamos el porqué de cada decisión.</p>
+        <p class="lamina__logro"><b>Sales con</b> un diseño que puedes explicar y defender.</p>
+      </div>
+      <figure class="lamina__figura">
+        <div class="hueco" data-hueco></div>
+        <figcaption><b>Figura 3.</b> <i>Esfera armilar: el método como instrumento.</i> Fuente: elaboración propia.</figcaption>
+      </figure>
+      <p class="nota" aria-hidden="true"><span class="nota__texto">que el método responda a la pregunta</span><svg class="trazo"><use href="#t-flecha"/></svg></p>
+    </article>
+
+    <!-- 4 · Resultados -->
+    <article class="lamina lamina--etapa lamina--par" data-etapa="4">
+      <div class="lamina__texto">
+        <p class="lamina__cap">Capítulo 4. Resultados y análisis</p>
+        <h2 class="lamina__titulo">Los datos no hablan solos.</h2>
+        <p class="lamina__cuerpo">Te orientamos para analizar e interpretar tus resultados y presentarlos con tablas, figuras y una discusión que responda a tus objetivos.</p>
+        <p class="lamina__logro"><b>Sales con</b> resultados claros y conclusiones que se sostienen.</p>
+      </div>
+      <figure class="lamina__figura">
+        <div class="hueco" data-hueco></div>
+        <figcaption><b>Figura 4.</b> <i>Resultados y tendencia.</i> Fuente: elaboración propia.</figcaption>
+      </figure>
+      <p class="nota" aria-hidden="true"><span class="nota__texto">interpreta, no solo describas</span><svg class="trazo"><use href="#t-flecha"/></svg></p>
+    </article>
+
+    <!-- 5 · Sustentación -->
+    <article class="lamina lamina--etapa" data-etapa="5">
+      <div class="lamina__texto">
+        <p class="lamina__cap">Capítulo 5. La sustentación</p>
+        <h2 class="lamina__titulo">Sustenta con dominio. Que se note que es tuya.</h2>
+        <p class="lamina__cuerpo">Hacemos simulacros con preguntas de jurado y afinamos tu presentación y tu manejo del tiempo. Después te acompañamos con los ajustes que te pidan.</p>
+        <p class="lamina__logro"><b>Sales con</b> el informe de Turnitin de tu trabajo y la seguridad de quien lo conoce.</p>
+      </div>
+      <figure class="lamina__figura">
+        <div class="hueco" data-hueco></div>
+        <figcaption><b>Figura 5.</b> <i>Laurel.</i> Fuente: elaboración propia.</figcaption>
+      </figure>
+      <p class="nota" aria-hidden="true"><span class="nota__texto">respira. Te la sabes.</span><svg class="trazo"><use href="#t-flecha"/></svg></p>
+    </article>
+
+    <ol class="ruta__capitulos" aria-label="Capítulos de la ruta">
+      <li><button type="button" data-cap="1" aria-label="Capítulo 1, planteamiento del problema">1</button></li>
+      <li><button type="button" data-cap="2" aria-label="Capítulo 2, marco teórico">2</button></li>
+      <li><button type="button" data-cap="3" aria-label="Capítulo 3, diseño metodológico">3</button></li>
+      <li><button type="button" data-cap="4" aria-label="Capítulo 4, resultados y análisis">4</button></li>
+      <li><button type="button" data-cap="5" aria-label="Capítulo 5, la sustentación">5</button></li>
+    </ol>
+    <div class="ruta__avance" aria-hidden="true"></div>
+  </div>
+</section>
+
+<!-- ===================== LÍNEAS DE ASESORÍA ===================== -->
+<section class="pliego" id="servicios" aria-labelledby="t-servicios">
+  <div class="hoja">
+    <span class="hoja__folio" aria-hidden="true">2</span>
+    <h2 class="apa-1" id="t-servicios">Líneas de asesoría</h2>
+    <p class="apa-p apa-p--sangria">Cada estudiante llega en un punto distinto: con una idea suelta, con un capítulo devuelto o con la sustentación encima. Por eso trabajamos en cuatro líneas. En todas, <mark>tú escribes y decides; nosotros te orientamos, revisamos y explicamos.</mark></p>
+
+    <div class="lineas">
+      <article class="linea">
+        <div>
+          <h3 class="apa-2">Tesis y trabajos de grado de pregrado</h3>
+          <p class="apa-p">Acompañamiento por capítulos para tu proyecto de grado, monografía o tesis, desde el anteproyecto hasta la sustentación. Trabajamos uno a uno, revisamos cada avance y te explicamos cada observación.</p>
+          <p class="linea__incluye"><i>Incluye:</i> planteamiento y objetivos, marco teórico y estado del arte, diseño metodológico, análisis de resultados, normas APA o ICONTEC, preparación de sustentación e informe de Turnitin al cierre.</p>
+          <p class="linea__pedir"><a href="#solicitud" data-servicio="Tesis o trabajo de grado">Solicitar asesoría de tesis</a></p>
+        </div>
+        <p class="al-margen" aria-hidden="true">por capítulos, a tu ritmo</p>
+      </article>
+
+      <article class="linea">
+        <div>
+          <h3 class="apa-2">Tesis de posgrado</h3>
+          <p class="apa-p">Para especialización, maestría y doctorado. Una asesoría de mayor profundidad, con equipo interdisciplinario y apoyo en análisis cuantitativo y cualitativo.</p>
+          <p class="linea__incluye"><i>Incluye:</i> revisión de literatura, diseño de investigación, análisis de datos, redacción académica, simulacros de sustentación e informe de Turnitin al cierre.</p>
+          <p class="linea__pedir"><a href="#solicitud" data-servicio="Tesis o trabajo de grado" data-nivel="Maestría">Solicitar asesoría de posgrado</a></p>
+        </div>
+        <p class="al-margen" aria-hidden="true">aquí entra el equipo de varias áreas</p>
+      </article>
+
+      <article class="linea">
+        <div>
+          <h3 class="apa-2">Actividades académicas</h3>
+          <p class="apa-p">Asesoría puntual para las entregas del semestre: ensayos, talleres, informes, proyectos de aula y exposiciones. Te explicamos el tema, revisamos tu avance y te damos retroalimentación para que mejores tu entrega.</p>
+          <p class="linea__incluye"><i>Incluye:</i> explicación del tema, revisión de tu borrador, normas de citación y preparación de exposiciones.</p>
+          <p class="linea__pedir"><a href="#solicitud" data-servicio="Actividad académica">Solicitar asesoría para una actividad</a></p>
+        </div>
+        <p class="al-margen" aria-hidden="true">sí, también durante el semestre</p>
+      </article>
+
+      <article class="linea">
+        <div>
+          <h3 class="apa-2">Evaluaciones de repaso</h3>
+          <p class="apa-p">Sesiones de repaso antes de tus parciales y finales. Aplicamos una evaluación de práctica, identificamos los temas en los que fallas y los repasamos contigo hasta que queden claros.</p>
+          <p class="linea__incluye"><i>Incluye:</i> evaluación diagnóstica, repaso por temas, ejercicios tipo examen y retroalimentación.</p>
+          <p class="linea__pedir"><a href="#solicitud" data-servicio="Evaluación de repaso">Solicitar una evaluación de repaso</a></p>
+        </div>
+        <p class="al-margen" aria-hidden="true">practica antes, no la noche anterior</p>
+      </article>
+    </div>
+
+    <div class="tabla">
+      <p class="tabla__num">Tabla 1</p>
+      <p class="tabla__titulo">Modalidades de acompañamiento para trabajos de grado</p>
+      <table>
+        <thead>
+          <tr><th scope="col">Modalidad</th><th scope="col">Duración</th><th scope="col">Pensada para</th><th scope="col">Incluye</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Express</td>
+            <td data-col="Duración">1 a 2 días</td>
+            <td data-col="Pensada para">Sustentaciones cercanas o ajustes finales.</td>
+            <td data-col="Incluye">Revisión metodológica, corrección de normas APA o ICONTEC, preparación de sustentación e informe de Turnitin.</td>
+          </tr>
+          <tr>
+            <td><span class="cercado">Acompañamiento completo<svg class="trazo" viewBox="0 0 240 64" preserveAspectRatio="none" aria-hidden="true"><path d="M14 36C6 14 70 4 150 6c64 2 86 16 80 30-8 18-80 24-146 22C34 56 6 48 12 28 16 16 40 9 62 8"/></svg></span> <span class="al-margen" aria-hidden="true">la más solicitada</span><span class="solo-lector">(la más solicitada)</span></td>
+            <td data-col="Duración">5 a 7 días</td>
+            <td data-col="Pensada para">Trabajos de pregrado, del marco teórico a la sustentación.</td>
+            <td data-col="Incluye">Marco teórico y estado del arte, diseño metodológico, análisis de resultados, preparación profunda de sustentación e informe de Turnitin.</td>
+          </tr>
+          <tr>
+            <td>Premium</td>
+            <td data-col="Duración">8 a 12 días</td>
+            <td data-col="Pensada para">Tesis de posgrado y trabajos de alta complejidad.</td>
+            <td data-col="Incluye">Equipo interdisciplinario, análisis cuantitativo y cualitativo, material visual para tu presentación, simulacros de sustentación e informe de Turnitin.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="tabla__nota"><i>Nota.</i> Trabajamos según el avance actual de tu proyecto, o desde la elección del tema si apenas empiezas. Cada propuesta se construye a la medida de tu trabajo, tus tiempos y tus objetivos académicos.</p>
+      <p class="tabla__pedir"><a class="boton boton--tinta" href="#solicitud">Solicitar asesoría</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= NOSOTROS ========================= -->
+<section class="nosotros" id="nosotros" aria-labelledby="t-nosotros">
+  <div class="nosotros__in">
+    <h2 class="nosotros__titulo" id="t-nosotros">Tú eres el autor. Nosotros, tu guía.</h2>
+    <p class="nosotros__intro">Nuestro modelo es educativo. Te orientamos en cada etapa para que adquieras las competencias investigativas que necesitas y desarrolles tu propio trabajo con autonomía académica.</p>
+    <p class="nosotros__nota" aria-hidden="true">rigor, discreción y excelencia</p>
+
+    <dl class="razones">
+      <div>
+        <dt>Docentes universitarios activos</dt>
+        <dd>Quien te asesora está hoy en el aula. Conocemos los criterios de evaluación, los jurados y las exigencias reales de las universidades colombianas.</dd>
+      </div>
+      <div>
+        <dt>Equipo interdisciplinario</dt>
+        <dd>Trabajamos con profesionales de varias áreas. Cada trabajo recibe la asesoría de quien conoce a fondo tu disciplina.</dd>
+      </div>
+      <div>
+        <dt>Normas académicas vigentes</dt>
+        <dd>Aplicamos APA, ICONTEC y los lineamientos de tu universidad, y te enseñamos a citar y referenciar con rigor.</dd>
+      </div>
+      <div>
+        <dt>Atención privada, uno a uno</dt>
+        <dd>Trabajamos por los canales privados que prefieras. Tu información y tu proceso se manejan con total profesionalismo.</dd>
+      </div>
+      <div>
+        <dt>Informe de Turnitin al cierre</dt>
+        <dd>Cuando terminamos el acompañamiento, pasamos tu trabajo por Turnitin y te entregamos el informe, para que se lo muestres a tus docentes y despejes cualquier duda.</dd>
+      </div>
+      <div>
+        <dt>Observaciones en 24, 48 o 72 horas</dt>
+        <dd>Revisamos cada avance y te lo devolvemos con observaciones claras en 24, 48 o 72 horas, según su extensión.</dd>
+      </div>
+    </dl>
+
+    <p class="hechos">Más de 10 años de experiencia. Respuesta por WhatsApp en menos de 24 horas. 100% online, en toda Colombia.</p>
+  </div>
+
+  <div class="areas" aria-labelledby="t-areas">
+    <p class="areas__rotulo" id="t-areas">Áreas que acompañamos</p>
+    <ul class="areas__cinta">
+      <li>Ciencias sociales y humanidades</li>
+      <li>Administración, economía y finanzas</li>
+      <li><span>Ingenierías<sup>1</sup></span></li>
+      <li>Derecho y ciencias jurídicas</li>
+      <li>Comunicación, diseño y artes</li>
+      <li>Educación y pedagogía</li>
+      <li>Tecnologías de la información</li>
+    </ul>
+  </div>
+  <p class="nota-pie"><span><sup>1</sup> Por compromiso ético y responsabilidad profesional no asesoramos trabajos en ciencias de la salud ni en ingeniería eléctrica: son disciplinas donde el rigor técnico y clínico exige el respaldo directo de especialistas del sector.</span></p>
+</section>
+
+<!-- ==================== PREGUNTAS FRECUENTES ==================== -->
+<section class="pliego" id="preguntas" aria-labelledby="t-preguntas">
+  <div class="hoja">
+    <span class="hoja__folio" aria-hidden="true">4</span>
+    <h2 class="apa-1" id="t-preguntas">Preguntas frecuentes</h2>
+    <div class="faq">
+      <details>
+        <summary>¿Cómo funciona el proceso de asesoría?</summary>
+        <p class="faq__r">Iniciamos con una conversación por WhatsApp donde nos cuentas el estado actual de tu trabajo, tu fecha de sustentación y los requerimientos de tu universidad. Te entregamos una propuesta personalizada, definimos el cronograma y empezamos. Todo el proceso es 100% online, con comunicación constante y retroalimentación en cada avance.</p>
+      </details>
+      <details>
+        <summary>¿Cómo solicito una orientación?</summary>
+        <p class="faq__r">Llena la solicitud de esta página o escríbenos directo por WhatsApp. Analizamos contigo el estado de tu trabajo, los requisitos de tu universidad y tus tiempos, y resolvemos tus dudas sin compromiso antes de iniciar cualquier proceso de acompañamiento.</p>
+      </details>
+      <details>
+        <summary>¿Cómo aseguran la calidad del acompañamiento?</summary>
+        <p class="faq__r">Nuestro equipo está conformado por docentes universitarios activos con experiencia en dirección y evaluación de trabajos de grado. Aplicamos con rigor las normas APA, ICONTEC y los lineamientos académicos de tu universidad, y te damos retroalimentación en cada fase para que el resultado cumpla con los estándares que exige tu institución.</p>
+      </details>
+      <details>
+        <summary>¿Entregan informe de Turnitin?</summary>
+        <p class="faq__r">Sí. Al terminar el acompañamiento pasamos tu trabajo por Turnitin y te entregamos el informe, con el porcentaje de similitud y el indicador de escritura con IA. Así puedes mostrárselo a tu director o a tus docentes y despejar cualquier duda sobre la originalidad de tu trabajo.</p>
+      </details>
+      <details>
+        <summary>¿En qué consiste su metodología?</summary>
+        <p class="faq__r">Es educativa y personalizada. Te orientamos paso a paso en cada fase de tu trabajo de grado: definición del problema, marco teórico, metodología, análisis y conclusiones. Trabajamos uno a uno, por los canales privados que prefieras, para que adquieras las competencias investigativas que necesitas.</p>
+      </details>
+      <details>
+        <summary>¿En qué se diferencia cada modalidad?</summary>
+        <p class="faq__r">Express (1 a 2 días) es ideal si ya tienes avance y necesitas revisión, ajustes finales y preparación de sustentación. El acompañamiento completo (5 a 7 días) cubre las etapas del trabajo de pregrado. Premium (8 a 12 días) está pensada para tesis de maestría, posgrado o trabajos complejos con análisis profundos.</p>
+      </details>
+      <details>
+        <summary>¿También asesoran actividades y evaluaciones del semestre?</summary>
+        <p class="faq__r">Sí. Además de los trabajos de grado, ofrecemos asesoría puntual para ensayos, talleres, informes y exposiciones, y sesiones de repaso con evaluaciones de práctica antes de tus parciales y finales.</p>
+      </details>
+      <details>
+        <summary>¿Trabajan con estudiantes de cualquier universidad?</summary>
+        <p class="faq__r">Sí. Atendemos estudiantes de universidades públicas y privadas en toda Colombia: Universidad Nacional, UIS, UNAB, UPB, Javeriana, Andes, Distrital, Pedagógica, UDES, USTA, EAFIT e ICESI, entre muchas otras. Nos adaptamos a los formatos, normas y exigencias de cada institución.</p>
+      </details>
+      <details>
+        <summary>¿Qué pasa si me piden ajustes en la sustentación?</summary>
+        <p class="faq__r">Te acompañamos con los ajustes que solicite tu jurado, dentro de un plazo razonable después de la sustentación. Nuestro objetivo es que te gradúes, no solo que entregues a tiempo.</p>
+      </details>
+      <details>
+        <summary>¿Atienden todas las áreas académicas?</summary>
+        <p class="faq__r">Atendemos casi todas: ciencias sociales, ingenierías, administración, derecho, educación, comunicación, artes y tecnologías, entre otras. Por compromiso ético no asesoramos trabajos en ciencias de la salud ni en ingeniería eléctrica, porque exigen el respaldo de especialistas certificados del sector.</p>
+      </details>
+    </div>
+    <p class="faq__cola"><span class="al-margen" aria-hidden="true">¿te quedó otra duda?</span> <a href="https://wa.me/573167672653?text=Hola,%20quiero%20informaci%C3%B3n" target="_blank" rel="noopener">Escríbenos por WhatsApp</a></p>
+  </div>
+</section>
+
+<!-- ==================== SOLICITUD DE ASESORÍA ==================== -->
+<section class="pliego" id="solicitud" aria-labelledby="t-solicitud">
+  <div class="hoja">
+    <span class="hoja__folio" aria-hidden="true">5</span>
+    <div class="formato__cab">
+      <div>
+        <h2 class="apa-1" id="t-solicitud">Solicitud de asesoría</h2>
+        <p>Completa estos datos y recibe una propuesta personalizada por WhatsApp.</p>
+      </div>
+      <p class="sello">Respuesta en <b>menos de 24 h</b></p>
+    </div>
+
+    <div class="formato__cuerpo">
+      <form id="formatoSolicitud">
+        <fieldset class="opciones">
+          <legend>¿Qué necesitas?</legend>
+          <label class="opcion"><input type="radio" name="servicio" value="Tesis o trabajo de grado" checked><span class="opcion__caja"><svg class="trazo"><use href="#t-visto"/></svg></span><span>Tesis o trabajo de grado</span></label>
+          <label class="opcion"><input type="radio" name="servicio" value="Actividad académica"><span class="opcion__caja"><svg class="trazo"><use href="#t-visto"/></svg></span><span>Actividad académica</span></label>
+          <label class="opcion"><input type="radio" name="servicio" value="Evaluación de repaso"><span class="opcion__caja"><svg class="trazo"><use href="#t-visto"/></svg></span><span>Evaluación de repaso</span></label>
+          <label class="opcion"><input type="radio" name="servicio" value="Preparación de sustentación"><span class="opcion__caja"><svg class="trazo"><use href="#t-visto"/></svg></span><span>Preparar la sustentación</span></label>
+        </fieldset>
+
+        <label class="campo">
+          <span class="campo__rotulo">Nombre completo</span>
+          <input type="text" name="nombre" placeholder="Tu nombre y apellido" autocomplete="name" maxlength="80" required>
+        </label>
+
+        <div class="campo-par">
+          <label class="campo">
+            <span class="campo__rotulo">WhatsApp</span>
+            <input type="tel" name="telefono" placeholder="Ej.: 300 123 4567" inputmode="tel" autocomplete="tel" pattern="[0-9 +]{10,17}" maxlength="17" required>
+          </label>
+          <label class="campo">
+            <span class="campo__rotulo">Nivel académico</span>
+            <select name="nivel" required>
+              <option value="">Selecciona</option>
+              <option value="Pregrado">Pregrado</option>
+              <option value="Especialización">Especialización</option>
+              <option value="Maestría">Maestría</option>
+              <option value="Doctorado">Doctorado</option>
+            </select>
+          </label>
+        </div>
+
+        <label class="campo">
+          <span class="campo__rotulo">Universidad y programa</span>
+          <input type="text" name="universidad" placeholder="Ej.: U. Nacional, Ing. Industrial" autocomplete="organization" maxlength="120" required>
+        </label>
+
+        <label class="campo" id="campoEtapa">
+          <span class="campo__rotulo">¿En qué etapa está tu trabajo?</span>
+          <select name="etapa" required>
+            <option value="">Selecciona</option>
+            <option value="Aún no he empezado">Aún no he empezado</option>
+            <option value="Anteproyecto">Anteproyecto o propuesta</option>
+            <option value="Marco teórico en desarrollo">Marco teórico en desarrollo</option>
+            <option value="Metodología y resultados">Metodología y resultados</option>
+            <option value="Listo, necesito revisión final">Listo, necesito revisión final</option>
+            <option value="Preparación de sustentación">Preparación de sustentación</option>
+          </select>
+        </label>
+
+        <label class="campo" id="campoTema" hidden>
+          <span class="campo__rotulo">Materia y tema</span>
+          <input type="text" name="tema" placeholder="Ej.: Estadística II, pruebas de hipótesis" maxlength="120">
+        </label>
+
+        <label class="opcion opcion--acepto">
+          <input type="checkbox" name="autorizo" value="si" required>
+          <span class="opcion__caja"><svg class="trazo"><use href="#t-visto"/></svg></span>
+          <span>Autorizo el tratamiento de mis datos para recibir respuesta por WhatsApp, según el <a href="privacidad.html" target="_blank" rel="noopener">aviso de privacidad</a>.</span>
+        </label>
+
+        <div class="formato__enviar">
+          <button class="boton boton--tinta" type="submit"><svg aria-hidden="true"><use href="#i-wa"/></svg>Enviar solicitud por WhatsApp</button>
+          <p class="formato__estado" role="status" aria-live="polite" hidden></p>
+          <p class="formato__aviso">Tus datos se tratan con total confidencialidad: la página no los guarda, van directo a nuestro WhatsApp y solo se usan para responderte.</p>
+        </div>
+      </form>
+
+      <aside class="despues" aria-labelledby="t-despues">
+        <h3 id="t-despues">Qué pasa después</h3>
+        <ol>
+          <li>Se abre WhatsApp con tu solicitud ya escrita. Solo tienes que enviarla.</li>
+          <li>Revisamos tu caso y te respondemos en menos de 24 horas con una propuesta a tu medida.</li>
+          <li>Si te sirve, definimos el cronograma y empezamos.</li>
+        </ol>
+        <p class="al-margen" aria-hidden="true">sin compromiso</p>
+        <p class="despues__directo">¿Prefieres escribir directo? <a href="https://wa.me/573167672653?text=Hola,%20quiero%20informaci%C3%B3n" target="_blank" rel="noopener">WhatsApp 316 767 2653</a></p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- =========================== CIERRE =========================== -->
+<section class="cierre" id="cierre" aria-labelledby="t-cierre">
+  <div class="hueco" data-hueco-cierre></div>
+  <div>
+    <h2 class="cierre__titulo" id="t-cierre">Tu grado está más cerca de lo que imaginas.</h2>
+    <p class="cierre__texto">Cuéntanos sobre tu trabajo y recibe una propuesta de acompañamiento personalizada en menos de 24 horas.</p>
+    <p class="cierre__acciones"><a class="boton boton--oro" href="#solicitud">Solicitar asesoría</a><span class="cierre__nota" aria-hidden="true">nos vemos en tu grado</span></p>
+  </div>
+</section>
+
+</main>
+
+<footer class="pie">
+  <div class="pie__in">
+    <div>
+      <p class="pie__marca"><svg class="marca__logo" aria-hidden="true"><use href="#logo-marca"/></svg><span>Alma <i>Docta</i></span></p>
+      <p class="pie__lema">Asesores de tesis</p>
+      <p>Tutoría académica profesional para tu trabajo de grado. Docentes universitarios activos al servicio de tu aprendizaje y tu éxito académico.</p>
+    </div>
+    <nav aria-label="Pie de página">
+      <h3>Navegación</h3>
+      <ul>
+        <li><a href="#ruta">La ruta de tu tesis</a></li>
+        <li><a href="#servicios">Líneas de asesoría</a></li>
+        <li><a href="#nosotros">Por qué nosotros</a></li>
+        <li><a href="#preguntas">Preguntas frecuentes</a></li>
+      </ul>
+    </nav>
+    <div>
+      <h3>Contacto</h3>
+      <ul>
+        <li><a href="https://wa.me/573167672653" target="_blank" rel="noopener">WhatsApp: 316 767 2653</a></li>
+        <li>Cobertura: Colombia</li>
+        <li>Modalidad: 100% online</li>
+      </ul>
+    </div>
+  </div>
+  <p class="pie__legal"><span>© <span id="anio">2026</span> Alma Docta. Asesores de tesis. Colombia. · <a href="privacidad.html">Aviso de privacidad</a></span><span>Música: <i>How Did We</i>, de Toby Tranter.</span><span>Hecho con excelencia</span></p>
+</footer>
+
+<a class="wa" href="https://wa.me/573167672653?text=Hola,%20quiero%20informaci%C3%B3n" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg aria-hidden="true"><use href="#i-wa"/></svg>
+</a>
+
+
+</body>
+</html>
